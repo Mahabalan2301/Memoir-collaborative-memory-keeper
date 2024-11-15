@@ -1,0 +1,78 @@
+/* src/CalendarView.css */
+
+/* CalendarView.css */
+.calendar-view {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .add-memory-form {
+    margin-bottom: 30px;
+  }
+  
+  .add-memory-form h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .memory-title, .memory-text, .memory-date {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .memory-title {
+    height: 40px;
+  }
+  
+  .memory-text {
+    height: 100px;
+  }
+  
+  .add-memory-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .add-memory-button:hover {
+    background-color: #45a049;
+  }
+  
+  .events-list {
+    margin-top: 30px;
+  }
+  
+  .events-list h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .event-card {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .event-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+  
+  .event-card p {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+  }
+/* App.css */
