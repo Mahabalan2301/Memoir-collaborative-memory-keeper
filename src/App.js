@@ -1,9 +1,9 @@
 // App.js
-
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from './firebaseConfig';
+import videoSrc from './vid2.mp4'; 
 
 import CalendarView from './CalendarView';
 import DatePicker from 'react-datepicker';
@@ -116,41 +116,65 @@ const App = () => {
   };
 
   return (
+    
     <div className="app-container">
-      <h1 className="head1">Memoir Calendar</h1>
-      <div className="auth-container">
-        {isSignedIn ? (
-          <button onClick={handleSignOut}>Sign Out</button>
-        ) : (
-          <button onClick={handleSignIn} disabled={loading}>
-            {loading ? 'Signing In...' : 'Sign In with Google'}
-          </button>
-        )}
+      {/* Background Video */}
+      <video className="bg-video" autoPlay loop muted>
+        <source src={videoSrc} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Header */}
+      <header className="header">
+        <h1 className="head1">Memoir Calendar</h1>
+        <div className="auth-container">
+          {isSignedIn ? (
+            <button onClick={handleSignOut}>Sign Out</button>
+          ) : (
+            <button onClick={handleSignIn} disabled={loading}>
+              {loading ? 'Signing In...' : 'Sign In with Google'}
+            </button>
+          )}
+        </div>
+      </header>
+
+      {/* Top Section: Calendar Picker and Add Memory */}
+      <div className="top-section">
+        <div className="date-picker">
+          <DatePicker
+            selected={memoryDate}
+            onChange={(date) => setMemoryDate(date)}
+            inline
+            calendarClassName="calendar-picker"
+          />
+        </div>
+
+        <div className="add-memory">
+          <h2>Add Memory</h2>
+          <input
+            type="text"
+            placeholder="Memory Title"
+            value={memoryTitle}
+            onChange={(e) => setMemoryTitle(e.target.value)}
+          />
+          <textarea
+            placeholder="Memory Description"
+            value={memoryText}
+            onChange={(e) => setMemoryText(e.target.value)}
+          />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setMemoryImage(e.target.files[0])}
+          />
+          <button onClick={addMemoryToCalendar}>Add Memory</button>
+        </div>
       </div>
 
-      {isSignedIn ? (
-        <div className="content-container">
-          <div className="date-picker-sidebar">
-            <h2>Select Date</h2>
-            <DatePicker
-              selected={memoryDate}
-              onChange={(date) => setMemoryDate(date)}
-              inline
-              calendarClassName="calendar-picker"
-            />
-          </div>
-          <div className="add-memory-form">
-            <h2>Add a New Memory</h2>
-            <input type="text" placeholder="Memory Title" value={memoryTitle} onChange={(e) => setMemoryTitle(e.target.value)} />
-            <textarea placeholder="Memory Description" value={memoryText} onChange={(e) => setMemoryText(e.target.value)} />
-            <input type="file" accept="image/*" onChange={(e) => setMemoryImage(e.target.files[0])} />
-            <button onClick={addMemoryToCalendar}>Add Memory</button>
-          </div>
-          <CalendarView events={events} />
-        </div>
-      ) : (
-        <p>Please sign in to add and view memories on your calendar.</p>
-      )}
+      {/* My Calendar Section Below */}
+      <div className="calendar-view">
+        <CalendarView events={events} />
+      </div>
     </div>
   );
 };
@@ -158,7 +182,6 @@ const App = () => {
 const Dashboard = () => (
   <div>
     <h2>Welcome to the Dashboard</h2>
-    {/* Add dashboard content here */}
   </div>
 );
 

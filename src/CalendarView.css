@@ -1,78 +1,134 @@
 /* src/CalendarView.css */
 
 /* CalendarView.css */
-.calendar-view {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-  }
-  
-  .add-memory-form {
-    margin-bottom: 30px;
-  }
-  
-  .add-memory-form h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-  }
-  
-  .memory-title, .memory-text, .memory-date {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
-  .memory-title {
-    height: 40px;
-  }
-  
-  .memory-text {
-    height: 100px;
-  }
-  
-  .add-memory-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .add-memory-button:hover {
-    background-color: #45a049;
-  }
-  
-  .events-list {
-    margin-top: 30px;
-  }
-  
-  .events-list h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-  }
-  
-  .event-card {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 20px;
-  }
-  
-  .event-card h3 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-  }
-  
-  .event-card p {
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-  }
-/* App.css */
+/* Calendar grid styling */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-day {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  position: relative;
+  min-height: 100px;
+  text-align: center;
+  background:rgb(168, 125, 125)
+}
+
+.day-number {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+/* Event image circle */
+.events {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+.event-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.event-image-circle {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Image overlay for enlarged view */
+.image-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.image-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+/* Ensure the image overlay takes full screen */
+.image-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+/* Content inside the overlay */
+.image-overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Style the enlarged image */
+.enlarged-image {
+  max-width: 80%;
+  max-height: 80%;
+  margin-bottom: 20px;
+}
+
+/* Styling for the memory details */
+.memory-details h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.memory-details p {
+  color: white;
+  font-size: 1rem;
+  max-width: 500px;
+  line-height: 1.5;
+  margin: 0;
+}
+.calendar-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.calendar-navigation button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.calendar-navigation span {
+  font-weight: bold;
+}
